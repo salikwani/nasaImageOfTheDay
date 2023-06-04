@@ -1,7 +1,4 @@
 var saveDate = [];
-if(localStorage.getItem('saveDate')) {
-    saveDate = JSON.parse(localStorage.getItem('saveDate'));
-}
 
 const apiKey = 'jQTZSfWfhMSKAwS6yMxcYzmO5qUjjpl6CXWoGspx';
 var date = new Date().toISOString().split("T")[0];
@@ -54,7 +51,9 @@ function saveSearch() {
 
 function addSearchToHistory() {
     history.innerHTML = "";
-    saveDate = JSON.parse(localStorage.getItem('saveDate'));
+    if(localStorage.getItem('saveDate')) {
+        saveDate = JSON.parse(localStorage.getItem('saveDate'));
+    }
     var l = saveDate.length;
     for(var i=0;i<l;i++) {
         var li = document.createElement('li');
